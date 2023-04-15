@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rick_and_morty/features/settings/presentation/screens/settings_profile_screen/settings_profile_screen.dart';
 import 'package:rick_and_morty/internal/dependencies/get_it.dart';
 
 import '../../logic/bloc/profile_bloc.dart';
@@ -98,7 +99,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SizedBox(height: 30.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsProfile(),
+                          ));
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
@@ -121,9 +128,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                   SizedBox(height: 32.h),
-                  Divider(),
+                  const Divider(),
                   SizedBox(height: 36.h),
-                  Text(
+                  const Text(
                     'ВНЕШНИЙ ВИД',
                     style: TextStyle(
                       color: Color(0xff828282),
@@ -134,9 +141,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [],
                   ),
                   SizedBox(height: 36.h),
-                  Divider(),
+                  const Divider(),
                   SizedBox(height: 36.h),
-                  Text(
+                  const Text(
                     'О СЕБЕ',
                     style: TextStyle(
                       color: Color(0xff828282),
@@ -151,7 +158,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                   SizedBox(height: 36.h),
-                  Text(
+                  const Text(
                     'ВЕРСИЯ ПРИЛОЖЕНИЯ',
                     style: TextStyle(
                       color: Color(0xff828282),
@@ -160,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   SizedBox(height: 24.h),
                   Text(
                     'Rick & Morty  v$version',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                     ),
                   )

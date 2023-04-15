@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rick_and_morty/internal/dependencies/get_it.dart';
-
-import 'features/characters/presentation/screens/splash_screen/splash_screen.dart';
+import 'internal/helpers/splash_screen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,12 +22,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          // You can use the library anywhere in the app even in theme
           theme: ThemeData(
             primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(
-              fontSizeFactor: 1.sp,
-            ),
+            textTheme: Typography.englishLike2018
+                .apply(fontSizeFactor: 1.sp, bodyColor: Colors.black),
           ),
           home: child,
         );

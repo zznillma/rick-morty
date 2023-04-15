@@ -11,8 +11,8 @@ class EpisodeUseCases {
 
   EpisodeUseCases({required this.episodeRepository});
 
-  Future<EpisodeModel> getEpisode() async =>
-      await episodeRepository.getEpisode();
+  Future<EpisodeModel> getEpisode(int page) async =>
+      await episodeRepository.getEpisode(page);
 
   Future<List<CharacterResult>> getCharacter(EpisodeResult model) async =>
       await episodeRepository.getCharacter(model);

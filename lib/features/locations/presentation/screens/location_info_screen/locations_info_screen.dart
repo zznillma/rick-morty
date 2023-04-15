@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rick_and_morty/features/episodes/data/models/episode_model.dart';
 import 'package:rick_and_morty/internal/dependencies/get_it.dart';
 import 'package:rick_and_morty/internal/helpers/all_shimmer_widgets/resident_shimmer_screen.dart';
 import 'package:rick_and_morty/internal/helpers/utils.dart';
@@ -9,7 +8,7 @@ import 'package:rick_and_morty/internal/helpers/utils.dart';
 import '../../../../characters/data/models/characters_model.dart';
 import '../../../data/models/locations_model.dart';
 import '../../logic/locations_bloc.dart';
-import '../../../../characters/presentation/screens/character_list/character_info.dart';
+import '../../../../characters/presentation/screens/character_info_screen/character_info.dart';
 
 class Locationsinfo extends StatefulWidget {
   final CharacterModel characterModel;
@@ -42,7 +41,6 @@ class _LocationsinfoState extends State<Locationsinfo> {
       backgroundColor: Colors.black,
       body: ListView(
         padding: EdgeInsets.zero,
-        // physics: scrol(),
         children: [
           SizedBox(
             height: 296.h,
@@ -64,7 +62,7 @@ class _LocationsinfoState extends State<Locationsinfo> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.white,
                     ),

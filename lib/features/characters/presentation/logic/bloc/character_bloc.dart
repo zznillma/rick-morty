@@ -19,11 +19,12 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
     on<CharacterEvent>((event, emit) {});
 
     on<GetCharacterEvent>((event, emit) async {
-      emit(CharacterLoadingState());
-      print('123');
+      if (event.isFirstCall) {
+        emit(CharacterLoadingState());
+      }
 
       await useCases
-          .getCharacter()
+          .getCharacter(event.page)
           .then((characterModel) =>
               emit(CharacterLoadedState(characterModel: characterModel)))
           .onError((error, stackTrace) => emit(CharacterErrorState(
@@ -32,7 +33,6 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
 
     on<GetCharacterEpisodeEvent>((event, emit) async {
       emit(CharacterLoadingState());
-      print('123');
 
       await useCases
           .getEpisode(event.characterModel)

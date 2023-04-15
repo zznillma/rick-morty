@@ -15,12 +15,14 @@ class LocationsRepositoryImpl implements LocationsRepository {
   ApiRequester apiRequester = ApiRequester();
 
   @override
-  Future<LocationsModel> getLocations() async {
+  Future<LocationsModel> getLocations(int page) async {
     try {
-      Response response = await apiRequester.toGet('location');
+      Response response = await apiRequester.toGet(
+        'location',
+        param: {'page': page},
+      );
 
       if (response.statusCode == 200) {
-        // log('eeee === ${response.data}');
         return LocationsModel.fromJson(response.data);
       }
       throw CatchException.convertException(response);

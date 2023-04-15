@@ -14,9 +14,12 @@ class EpisodeRepositoryImpl implements EpisodeRepository {
   ApiRequester apiRequester = ApiRequester();
 
   @override
-  Future<EpisodeModel> getEpisode() async {
+  Future<EpisodeModel> getEpisode(int page) async {
     try {
-      Response response = await apiRequester.toGet('episode');
+      Response response = await apiRequester.toGet(
+        'episode',
+        param: {'page': page},
+      );
 
       if (response.statusCode == 200) {
         return EpisodeModel.fromJson(response.data);

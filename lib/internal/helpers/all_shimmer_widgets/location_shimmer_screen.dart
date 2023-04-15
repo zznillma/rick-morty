@@ -10,21 +10,6 @@ class LocationShimmerCard extends StatelessWidget {
     return CustomShimmerWidget(
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                'ВСЕГО ЛОКАЦИЙ: ',
-                style: TextStyle(
-                  color: Color(0xff828282),
-                ),
-              ),
-              Container(
-                height: 15,
-                width: 22,
-                color: Colors.amber,
-              ),
-            ],
-          ),
           SizedBox(height: 24.h),
           SizedBox(
             height: 576,

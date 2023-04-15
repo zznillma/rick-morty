@@ -20,10 +20,12 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
     on<LocationsEvent>((event, emit) {});
 
     on<GetLocationsEvent>((event, emit) async {
-      emit(LocationLoadingState());
+      if (event.isFirstCall) {
+        emit(LocationLoadingState());
+      }
 
       await useCases
-          .getLocations()
+          .getLocations(event.page)
           .then((locationsModel) =>
               emit(LocationLoadedState(locationsModel: locationsModel)))
           .onError((error, stackTrace) => emit(LocationErrorState(

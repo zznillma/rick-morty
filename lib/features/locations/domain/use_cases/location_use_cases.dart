@@ -11,8 +11,8 @@ class LocationUseCases {
 
   LocationUseCases({required this.locationsRepository});
 
-  Future<LocationsModel> getLocations() async =>
-      await locationsRepository.getLocations();
+  Future<LocationsModel> getLocations(int page) async =>
+      await locationsRepository.getLocations(page);
 
   Future<List<CharacterResult>> getResident(Result model) async =>
       await locationsRepository.getResident(model);

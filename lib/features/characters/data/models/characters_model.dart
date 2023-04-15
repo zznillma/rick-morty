@@ -140,10 +140,14 @@ class CharacterResult {
 }
 
 // ignore: constant_identifier_names
-enum Gender { MALE, FEMALE, UNKNOWN }
+enum Gender { GENDERLESS, MALE, FEMALE, UNKNOWN }
 
-final genderValues = EnumValues(
-    {"Female": Gender.FEMALE, "Male": Gender.MALE, "unknown": Gender.UNKNOWN});
+final genderValues = EnumValues({
+  "Female": Gender.FEMALE,
+  "Male": Gender.MALE,
+  "unknown": Gender.UNKNOWN,
+  "Genderless": Gender.GENDERLESS,
+});
 
 class Location {
   Location({
@@ -170,10 +174,24 @@ class Location {
       };
 }
 
-enum Species { HUMAN, ALIEN, MALE }
+enum Species {
+  HUMANOID,
+  CRONENBERG,
+  ROBOT,
+  MYTHOLOGICAL_CREATURE,
+  HUMAN,
+  ALIEN,
+  MALE
+}
 
-final speciesValues =
-    EnumValues({"Alien": Species.ALIEN, "Human": Species.HUMAN});
+final speciesValues = EnumValues({
+  "Alien": Species.ALIEN,
+  "Human": Species.HUMAN,
+  "Humanoid": Species.HUMANOID,
+  "Mythological Creature": Species.MYTHOLOGICAL_CREATURE,
+  'Cronenberg': Species.CRONENBERG,
+  'Robot': Species.ROBOT,
+});
 
 enum Status { ALIVE, UNKNOWN, DEAD }
 

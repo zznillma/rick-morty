@@ -17,9 +17,12 @@ class CharacterRepositoryImpl implements CharacterRepository {
   ApiRequester apiRequester = ApiRequester();
 
   @override
-  Future<CharacterModel> getCharacter() async {
+  Future<CharacterModel> getCharacter(int page) async {
     try {
-      Response response = await apiRequester.toGet('character');
+      Response response = await apiRequester.toGet(
+        'character',
+        param: {'page': page},
+      );
 
       if (response.statusCode == 200) {
         return CharacterModel.fromJson(response.data);

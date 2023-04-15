@@ -18,25 +18,23 @@ String getStatus(status) {
       return 'неизвестно';
 
     default:
-      return '';
+      return 'Неизвестно';
   }
 }
 
 String getSpecies(species) {
   switch (species) {
-    case 'Alien':
     case Species.ALIEN:
       return 'Пришелец';
     case Species.HUMAN:
-    case 'Human':
       return 'Человек';
-    case 'Robot':
+    case Species.ROBOT:
       return 'Робот';
-    case 'Cronenberg':
+    case Species.CRONENBERG:
       return 'Кроненберг';
     case 'Animal':
       return 'Животное';
-    case 'Mythological Creatur':
+    case Species.MYTHOLOGICAL_CREATURE:
       return 'Мифическое существо';
     default:
       return 'Неизвестно';
@@ -56,8 +54,10 @@ String getGender(gender) {
     case 'unknown':
     case Gender.UNKNOWN:
       return 'Неизвестно';
+    case Gender.GENDERLESS:
+      return 'Без гендера';
     default:
-      return '';
+      return 'Неизвестно';
   }
 }
 

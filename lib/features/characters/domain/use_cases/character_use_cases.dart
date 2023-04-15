@@ -11,8 +11,8 @@ class CharactherUseCases {
 
   CharactherUseCases({required this.characterRepository});
 
-  Future<CharacterModel> getCharacter() async =>
-      await characterRepository.getCharacter();
+  Future<CharacterModel> getCharacter(int page) async =>
+      await characterRepository.getCharacter(page);
 
   Future<List<EpisodeResult>> getEpisode(CharacterResult model) async =>
       await characterRepository.getEpisode(model);

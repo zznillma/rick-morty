@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rick_and_morty/features/episodes/presentation/screens/all_episode_screen/all_episodes.dart';
 import 'package:rick_and_morty/features/settings/presentation/screens/settings_screen/settings_screen.dart';
 
-import '../../features/characters/presentation/screens/character_list/character_list.dart';
+import '../../features/characters/presentation/screens/character_list_screen/character_list.dart';
 import '../../features/locations/presentation/screens/locations_screen/locations_screen.dart';
 
 class BottomNavBar extends StatefulWidget {

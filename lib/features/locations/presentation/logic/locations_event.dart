@@ -4,7 +4,15 @@ part of 'locations_bloc.dart';
 @immutable
 abstract class LocationsEvent {}
 
-class GetLocationsEvent extends LocationsEvent {}
+class GetLocationsEvent extends LocationsEvent {
+  final bool isFirstCall;
+  final int page;
+
+  GetLocationsEvent({
+    this.isFirstCall = false,
+    required this.page,
+  });
+}
 
 class GetResidentEvent extends LocationsEvent {
   final Result locationsModel;

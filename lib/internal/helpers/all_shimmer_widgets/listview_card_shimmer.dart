@@ -10,7 +10,7 @@ class ListViewCardShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomShimmerWidget(
       child: ListView.separated(
-        padding: EdgeInsets.only(top: 24.h),
+        padding: EdgeInsets.zero,
         itemCount: 10,
         itemBuilder: (context, index) {
           return InkWell(

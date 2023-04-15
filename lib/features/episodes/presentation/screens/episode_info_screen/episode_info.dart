@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rick_and_morty/features/characters/presentation/screens/character_list/character_info.dart';
+import 'package:rick_and_morty/features/characters/presentation/screens/character_info_screen/character_info.dart';
 import 'package:rick_and_morty/features/episodes/data/models/episode_model.dart';
+import 'package:rick_and_morty/features/episodes/presentation/widgets/episode_characters_card.dart';
 import 'package:rick_and_morty/internal/dependencies/get_it.dart';
+import 'package:rick_and_morty/internal/helpers/all_shimmer_widgets/character_shimmer_screen.dart';
 import 'package:rick_and_morty/internal/helpers/utils.dart';
 
 import '../../logic/bloc/episode_bloc.dart';
+import '../../widgets/video_play_card.dart';
 
 class EpisodeInfo extends StatefulWidget {
   final EpisodeResult episodeModel;
@@ -123,91 +125,11 @@ class _EpisodeInfoState extends State<EpisodeInfo> {
                       listener: (context, state) {},
                       builder: (context, state) {
                         if (state is LoadingState) {
-                          return const CircularProgressIndicator();
+                          return CharacterShimmerScreen();
                         }
                         if (state is CharacterLoadedState) {
-                          return ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => CharacterInfo(
-                                          characterModel:
-                                              state.characterModel[index],
-                                        ),
-                                      ));
-                                },
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 74.r,
-                                      width: 74.r,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100.r),
-                                        child: Image.network(
-                                          state.characterModel[index].image
-                                              .toString(),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(width: 16.w),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          getStatus(state
-                                              .characterModel[index].status),
-                                          style: TextStyle(
-                                            color: colorStatus(state
-                                                .characterModel[index].status),
-                                          ),
-                                        ),
-                                        Text(
-                                          state.characterModel[index].name
-                                              .toString(),
-                                          style: const TextStyle(
-                                              color: Colors.black),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '${getGender(state.characterModel[index].gender)}, ',
-                                              style: const TextStyle(
-                                                color: Color(0xff828282),
-                                              ),
-                                            ),
-                                            Text(
-                                              getSpecies(state
-                                                  .characterModel[index]
-                                                  .species),
-                                              style: const TextStyle(
-                                                color: Color(0xff828282),
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      size: 15.r,
-                                      color: Colors.black,
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                            separatorBuilder: (context, index) =>
-                                SizedBox(height: 24.h),
-                            itemCount: state.characterModel.length,
+                          return EpisodeCharacterCard(
+                            characterModel: state.characterModel,
                           );
                         }
 
@@ -217,29 +139,7 @@ class _EpisodeInfoState extends State<EpisodeInfo> {
                   ],
                 ),
               ),
-              Positioned(
-                top: 201.h,
-                left: 139.w,
-                child: Container(
-                  height: 99.r,
-                  width: 99.r,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.shade300,
-                          blurRadius: 10,
-                          offset: const Offset(0, 5)),
-                    ],
-                    color: const Color(0xff22A2BD),
-                    borderRadius: BorderRadius.circular(100.r),
-                  ),
-                  child: const Icon(
-                    Icons.play_arrow,
-                    color: Colors.white,
-                    size: 50,
-                  ),
-                ),
-              ),
+              const VideoPlayCard(),
             ],
           ),
         ],

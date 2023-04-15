@@ -18,10 +18,12 @@ class EpisodeBloc extends Bloc<EpisodeEvent, EpisodeState> {
     on<EpisodeEvent>((event, emit) {});
 
     on<GetEpisodeEvent>((event, emit) async {
-      emit(LoadingState());
+      if (event.isFirstCall) {
+        emit(LoadingState());
+      }
 
       await useCases
-          .getEpisode()
+          .getEpisode(event.page)
           .then((episodeModel) =>
               emit(EpisodeLoadedState(episodeModel: episodeModel)))
           .onError((error, stackTrace) =>
